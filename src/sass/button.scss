@@ -1,0 +1,13 @@
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    outline: 0;
+    border: 0;
+    font-size: 2rem;
+    border-radius: 0.4rem;
+    background: $grey;
+    color: $white;
+}

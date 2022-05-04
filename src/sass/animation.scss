@@ -1,0 +1,18 @@
+.isTrue{
+    background: $true;
+    color: $white;
+    &:hover{
+        background: $true;
+        color: $white;
+    }
+}
+
+.isFalse{
+    background: $false;
+    color: $white;
+    &:hover{
+        background: $false;
+        color: $white;
+    }
+}
+

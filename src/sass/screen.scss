@@ -1,0 +1,47 @@
+.screen{
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    &__questionText{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 200;
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.4;
+        color: $white;
+    }
+    &__choiceList{
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%,0%);
+        z-index: 200;
+        display: flex;
+        gap: 5rem;
+        justify-content: space-between;
+        height: 40%;
+        width: 100%;
+        padding: 0 2rem 2rem 2rem;
+
+        &__choice{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $white;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.4rem;
+            font-size: 3rem;
+            font-weight: 500;
+            transition: 0.1s ease-in-out;
+            &:hover{
+                background: rgb(230, 230, 230);
+                cursor: pointer;
+            }
+        }
+    }
+}
