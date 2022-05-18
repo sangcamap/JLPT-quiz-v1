@@ -1,23 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, memo } from 'react';
 import Background from './Background';
 import Choices from './Choices';
 import Question from './Question';
-import { QuestionInfoContext, QuestionInfoProvider } from './provider/QuestionInfoProvider';
+import { GlobalContext } from './GlobalContext';
+import Status from './Status';
 
 export default function Screen() {
-const data_QuestionInfoContext = useContext(QuestionInfoContext) 
-// console.log(data_QuestionInfoContext)
+const context = useContext(GlobalContext) 
+
 
   return (
-    <div className='screen'>
-            <Background></Background>
-            <Question>{data_QuestionInfoContext[0].question}</Question>
-            <Choices
-                choice1={data_QuestionInfoContext[0].choice1} 
-                choice2={data_QuestionInfoContext[0].choice2}
-                choice3={data_QuestionInfoContext[0].choice3}
-                >
-            </Choices>
+    <div className='screen-wrapper'>
+      <Status current = {context.QuestionIndex} allQuestion = {context.data.length}></Status>    
+      <div className='screen'>
+        <Question>{context.data[context.QuestionIndex].question}</Question>
+        <Choices></Choices>
+      </div>
     </div>
   )
 }
+
