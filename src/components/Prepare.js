@@ -12,13 +12,13 @@ useEffect(() =>{
 
 const [valid, setValid] = useState(false)
 const checkValid = (e) => {
-  if (e.target.value <= 0){
+  setValid(true)
+  if (e.target.value <= 0 || e.target.value.length === 0){
     setValid(false)
   }
   if (context.haveN2 == false && context.haveN3 == false && context.haveN4 == false ){
     setValid(false)
   }  
-  setValid(true)
 }
 
 const handleClick = () =>{
@@ -28,14 +28,16 @@ const handleClick = () =>{
     hidePrepare()
     notify(1)
     context.updateStartStatus(true)
+    context.timerStart()
   }
   else{
     notify(0)
+    context.updateStartStatus(false)
   }
 }
 
 
-console.log(valid)
+// console.log(valid)
 
   return (
     <div className='prepare'>

@@ -1,6 +1,8 @@
 import React , {useContext, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { QuestionInfoContext } from './GlobalContext'
+import MyStopwatch from './Timer'
+
 
 
 export default function Status(props) {
@@ -28,9 +30,8 @@ export default function Status(props) {
             <span className='screen__status__left__questionNumber'>{props.current + 1}/{props.allQuestion}</span>
         </div>
         <div className='screen__status__right'>
-            <button className='screen__status__right__expandBtn btn' type='button' 
-            onClick={ openFullscreen }>
-              <FontAwesomeIcon icon="fa-solid fa-expand" /></button>
+        <MyStopwatch />
+            <button className='screen__status__right__expandBtn btn' type='button' onClick={ openFullscreen }><FontAwesomeIcon icon="fa-solid fa-expand" /></button>
         </div>
     </div>
   )

@@ -27,4 +27,13 @@
             font-weight: 700;
         }
     }
+    &__right{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        &__timer{
+            color: $white;
+            font-size: 1.6rem;
+        }
+    }
 }

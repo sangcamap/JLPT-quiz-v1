@@ -1,6 +1,7 @@
 import { createContext, useState , reducer, initialState, useReducer } from "react";
 import React from 'react'
 import { data } from './_test';
+import { useStopwatch } from "react-timer-hook";
 
 const GlobalContext = createContext() 
 
@@ -22,6 +23,16 @@ function GlobalContextProvider({children}) {
   const [haveN3, setN3] = useState(true)
   const [haveN4, setN4] = useState(false)
 
+  const {
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({autoStart: false});
 
   return (
     <GlobalContext.Provider value={
@@ -37,7 +48,15 @@ function GlobalContextProvider({children}) {
       haveN3,
       setN3,
       haveN4,
-      setN4
+      setN4,
+      seconds,
+      minutes,
+      hours,
+      days,
+      isRunning,
+      timerStart: start,
+      timerPause: pause,
+      timerReset: reset
     }
     }>
         {children}

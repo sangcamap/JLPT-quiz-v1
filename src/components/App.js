@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function App() {
   const notify = (e) => {
     if (e == 1){
-      toast('Bắt đầu nào')
+      
     }
     else {
       toast('Vui lòng lựa số câu và cấp độ')
@@ -25,7 +25,6 @@ function App() {
         <Background></Background>
         <Prepare notify={notify}></Prepare>
         <Screen></Screen>
-        {/* <h1> Helo </h1> */}
         <ToastContainer theme='dark' />
     </div>
   );
