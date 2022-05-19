@@ -14,7 +14,7 @@ export default function Finish() {
         document.querySelector('.ppc-percents span').innerHTML = `${percent} %`;
     }, [context.numberOfCorrect])
 
-console.log(context.history)
+// console.log(context.history)
   return (
     <div className='finish'>
         <div className='finish__left'>
@@ -29,9 +29,9 @@ console.log(context.history)
                 </div>
             </div>
             <div className='finish__left__info'>
-                <div className='finish__left__info__box' id='totalQuestion'>Số tổng số câu: 50</div>
-                <div className='finish__left__info__box' id='totalCorrect'>Số câu đúng: 35</div>
-                <div className='finish__left__info__box' id='totalCorrect'>Tổng thời gian: 00:00:03</div>
+                <div className='finish__left__info__box' id='totalQuestion'>Số tổng số câu: {context.total}</div>
+                <div className='finish__left__info__box' id='totalCorrect'>Số câu đúng: {context.numberOfCorrect}</div>
+                <div className='finish__left__info__box' id='totalCorrect'>Tổng thời gian: {context.endTime}</div>
             </div>
         </div>
         <div className='finish__right'>
@@ -39,14 +39,14 @@ console.log(context.history)
             <div className='finish__right__history'>
                 {context.history.map(e => 
                         e.isCorrect == true ? 
-                        (<div className='finish__right__history__item isTrue'>
+                        (<div className='finish__right__history__item isTrue' key = {e.questionIndex}>
                             <span className='finish__right__history__item__question'>{e.question}</span>
-                            <span className='finish__right__history__item__answer'>{e.answer}</span>
+                            <span className='finish__right__history__item__answer'>{context.data[e.questionIndex].choice[e.answer - 1]}</span>
                         </div>)
                         :
-                        (<span className='finish__right__history__item isFalse'>
+                        (<span className='finish__right__history__item isFalse' key = {e.questionIndex}>
                             <span className='finish__right__history__item__question'>{e.question}</span>
-                            <span className='finish__right__history__item__answer'>{e.answer}</span>
+                            <span className='finish__right__history__item__answer'>{context.data[e.questionIndex].choice[e.answer - 1]}</span>
                         </span>)
                 )}
             </div>

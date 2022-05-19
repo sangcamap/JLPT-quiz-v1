@@ -10,15 +10,17 @@ export default memo( function Choice() {
       console.log("Đúng")
       document.querySelector(`.choice${num}`).classList.add('isTrue')
       context.updateNumberOfCorrect()
-      // context.updateHistory(1)
+      context.updateHistory(1)
+      
     }
     else {
       document.querySelector(`.choice${num}`).classList.add('isFalse')
       console.log("Sai")
-      // context.updateHistory(0)
+      context.updateHistory(0)
     }
     setTimeout(() => {   
       if (context.QuestionIndex + 1 == context.total){
+        context.updateEndTime()
         hideScreen()
         showFinish()
       }
@@ -37,9 +39,9 @@ export default memo( function Choice() {
 
   return (
       <div className='screen__choiceList'>
-          <div className='screen__choiceList__choice choice1' onClick={() => {handleAnswer(1)}}>{context.data[context.QuestionIndex].choice1}</div>
-          <div className='screen__choiceList__choice choice2' onClick={() => {handleAnswer(2)}}>{context.data[context.QuestionIndex].choice2}</div>
-          <div className='screen__choiceList__choice choice3' onClick={() => {handleAnswer(3)}}>{context.data[context.QuestionIndex].choice3}</div>
+          <div className='screen__choiceList__choice choice1' onClick={() => {handleAnswer(1)}}>{context.data[context.QuestionIndex].choice[0]}</div>
+          <div className='screen__choiceList__choice choice2' onClick={() => {handleAnswer(2)}}>{context.data[context.QuestionIndex].choice[1]}</div>
+          <div className='screen__choiceList__choice choice3' onClick={() => {handleAnswer(3)}}>{context.data[context.QuestionIndex].choice[2]}</div>
       </div>
   )
 })

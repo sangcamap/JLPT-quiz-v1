@@ -82,11 +82,13 @@
                     border-radius: $rds / 2;
                     color: $black;
                     min-width: 10rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
 
         }
     }
 }
-
 

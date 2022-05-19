@@ -34,115 +34,38 @@ function GlobalContextProvider({children}) {
     reset,
   } = useStopwatch({autoStart: false});
 
+  const [endTime, setEndtime] =  useState()
+  const updateEndTime = () => {
+    setEndtime(`${hours}:${minutes}:${seconds}`)
+  }
+  
+
+
   const [numberOfCorrect, setNumberOfCorrect] = useState(0)
   const updateNumberOfCorrect = () =>{
     setNumberOfCorrect(numberOfCorrect+1)
   }
 
-  const history = [
-    // {
-    //   questionIndex: QuestionIndex,
-    //   question: data[QuestionIndex].question,
-    //   answer: data[QuestionIndex].answer,
-    //   isCorrect: e == 1 ? true : false
-    // }
-    {
-      questionIndex: 0,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: true
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 1,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: false
-    },
-    {
-      questionIndex: 2,
-      question: 'xsdgdsgkldogkdgfopdgop',
-      answer: 'sss',
-      isCorrect: true
-    }
-  ]
+  // const history = [
+  //   // {
+  //   //   questionIndex: QuestionIndex,
+  //   //   question: data[QuestionIndex].question,
+  //   //   answer: data[QuestionIndex].answer,
+  //   //   isCorrect: e == 1 ? true : false
+  //   // }
+  // ]
+  const [history, setHistory] = useState([])
+
+  const updateHistory = (e) => {
+    setHistory([...history, 
+      {
+        questionIndex: QuestionIndex,
+        question: data[QuestionIndex].question,
+        answer: data[QuestionIndex].answer,
+        isCorrect: e == 1 ? true : false
+      }
+    ]);
+  }
 
 
   return (
@@ -168,10 +91,13 @@ function GlobalContextProvider({children}) {
       timerStart: start,
       timerPause: pause,
       timerReset: reset,
+      endTime,
+      updateEndTime,
       total: data.length,
       numberOfCorrect,
       updateNumberOfCorrect,
       history,
+      updateHistory
     }
     }>
         {children}
