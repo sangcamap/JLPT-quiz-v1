@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {memo} from 'react'
 
-export default function Background() {
+
+export default memo( function Background() {
   return (
-    <div class="area" >
-            <ul class="circles">
+    <div className="area" >
+            <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -17,6 +18,6 @@ export default function Background() {
             </ul>
     </div >
   )
-}
+})
 
 

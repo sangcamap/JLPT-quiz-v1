@@ -1,5 +1,4 @@
-import React from 'react';
-import '../sass/main.scss';
+import React, { useContext } from 'react';
 import './fontAwesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Status from './Status';
@@ -8,8 +7,11 @@ import Prepare from './Prepare';
 import { showApp, hideApp } from './nav';
 import Background from './Background';
 import { ToastContainer, toast } from 'react-toastify';
+import { GlobalContext } from './GlobalContext';
+import Finish from './Finish';
 
 function App() {
+  const context = useContext(GlobalContext)
   const notify = (e) => {
     if (e == 1){
       
@@ -19,13 +21,13 @@ function App() {
     }
   }
 
-
   return (
     <div className="App app">
         <Background></Background>
         <Prepare notify={notify}></Prepare>
         <Screen></Screen>
         <ToastContainer theme='dark' />
+        <Finish></Finish>
     </div>
   );
 }

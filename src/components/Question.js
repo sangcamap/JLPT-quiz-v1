@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {memo} from 'react'
 
-export default function Question({children}) {
+
+export default memo( function Question({children}) {
+
   return (
     <div className='screen__questionText'>{children}</div>
   )
-}
+})

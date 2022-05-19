@@ -34,6 +34,117 @@ function GlobalContextProvider({children}) {
     reset,
   } = useStopwatch({autoStart: false});
 
+  const [numberOfCorrect, setNumberOfCorrect] = useState(0)
+  const updateNumberOfCorrect = () =>{
+    setNumberOfCorrect(numberOfCorrect+1)
+  }
+
+  const history = [
+    // {
+    //   questionIndex: QuestionIndex,
+    //   question: data[QuestionIndex].question,
+    //   answer: data[QuestionIndex].answer,
+    //   isCorrect: e == 1 ? true : false
+    // }
+    {
+      questionIndex: 0,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: true
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 1,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: false
+    },
+    {
+      questionIndex: 2,
+      question: 'xsdgdsgkldogkdgfopdgop',
+      answer: 'sss',
+      isCorrect: true
+    }
+  ]
+
+
   return (
     <GlobalContext.Provider value={
     {
@@ -56,7 +167,11 @@ function GlobalContextProvider({children}) {
       isRunning,
       timerStart: start,
       timerPause: pause,
-      timerReset: reset
+      timerReset: reset,
+      total: data.length,
+      numberOfCorrect,
+      updateNumberOfCorrect,
+      history,
     }
     }>
         {children}

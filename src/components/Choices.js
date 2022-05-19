@@ -1,27 +1,37 @@
-import React, {useContext} from 'react'
+import React, {memo, useContext} from 'react'
 import { GlobalContext} from './GlobalContext';
+import { hideScreen, showFinish } from './nav';
 
 
-
-export default function Choice() {
+export default memo( function Choice() {
   const context = useContext(GlobalContext)
   const handleAnswer = (num) => {
     if (num == context.data[context.QuestionIndex].answer){
       console.log("Đúng")
       document.querySelector(`.choice${num}`).classList.add('isTrue')
+      context.updateNumberOfCorrect()
+      // context.updateHistory(1)
     }
     else {
       document.querySelector(`.choice${num}`).classList.add('isFalse')
       console.log("Sai")
+      // context.updateHistory(0)
     }
     setTimeout(() => {   
-      context.NextQuestion()
-      console.log(`Câu ${context.QuestionIndex + 1}: ` + context.data[context.QuestionIndex])
-      document.querySelectorAll('.screen__choiceList__choice').forEach((e) =>{
-        e.classList.remove('isTrue')
-        e.classList.remove('isFalse')
-      })
+      if (context.QuestionIndex + 1 == context.total){
+        hideScreen()
+        showFinish()
+      }
+      else {
+        context.NextQuestion()
+        console.log(`Câu ${context.QuestionIndex + 1}: ` + context.data[context.QuestionIndex].question)
+        document.querySelectorAll('.screen__choiceList__choice').forEach((e) =>{
+          e.classList.remove('isTrue')
+          e.classList.remove('isFalse')
+        })
+      }
     }, 1000);
+
   }
 
 
@@ -32,4 +42,5 @@ export default function Choice() {
           <div className='screen__choiceList__choice choice3' onClick={() => {handleAnswer(3)}}>{context.data[context.QuestionIndex].choice3}</div>
       </div>
   )
-}
+})
+

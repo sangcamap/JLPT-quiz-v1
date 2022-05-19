@@ -69,7 +69,7 @@ const dataStorage = [
 ]
 
 const getDataFromStorage= () =>{
-    for (let i = 0; i < 9 ; i++){
+    for (let i = 0; i < 2 ; i++){
 
         let randomIndex = Math.floor(Math.random() * dataStorage.length );
         // dataStorage.map((e) => data.push(e))

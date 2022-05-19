@@ -1,13 +1,16 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState, memo} from 'react'
 import { GlobalContext } from './GlobalContext'
-import { hideApp, hidePrepare, hideScreen, showApp, showScreen } from './nav'
+import { hideApp, hidePrepare, hideScreen, showApp, showScreen, hideFinish, showFinish } from './nav'
 
 
 
-export default function Prepare({notify}) {
+export default memo( function Prepare({notify}) {
+
 const context = useContext(GlobalContext)
 useEffect(() =>{
   hideScreen()
+  // hidePrepare()
+  hideFinish()
 },[])
 
 const [valid, setValid] = useState(false)
@@ -44,19 +47,19 @@ const handleClick = () =>{
       <input className='prepare__numberOfQuestion' placeholder='Số câu' type='number' onChange={(e) => checkValid(e)}/>
       <div className='prepare__level'>
         <div className ="prepare__level__inputGroup">
-          <input type="checkbox" checked={context.haveN2} onClick = {() => {context.setN2(!context.haveN2)}}/>
-          <lable>N2</lable>
+          <input type="checkbox" checked={context.haveN2} onChange = {() => {context.setN2(!context.haveN2)}}/>
+          <span>N2</span>
         </div>
         <div className ="prepare__level__inputGroup">
-          <input type="checkbox" checked={context.haveN3} onClick = {() => {context.setN3(!context.haveN3)}}/>
-          <lable>N3</lable>
+          <input type="checkbox" checked={context.haveN3} onChange = {() => {context.setN3(!context.haveN3)}}/>
+          <span>N3</span>
         </div>
         <div className ="prepare__level__inputGroup">
-          <input type="checkbox" checked={context.haveN4} onClick = {() => {context.setN4(!context.haveN4)}}/>
-          <lable>N4</lable>
+          <input type="checkbox" checked={context.haveN4} onChange = {() => {context.setN4(!context.haveN4)}}/>
+          <span>N4</span>
         </div>
       </div>
       <button className='prepare__startBtn' type='button' onClick={handleClick}>Bắt đầu</button>
     </div>
   )
-}
+})
