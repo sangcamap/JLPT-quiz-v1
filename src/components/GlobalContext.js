@@ -1,6 +1,6 @@
 import { createContext, useState , reducer, initialState, useReducer } from "react";
 import React from 'react'
-import { data } from './_test';
+import { data, dataStorage } from './_test';
 import { useStopwatch } from "react-timer-hook";
 
 const GlobalContext = createContext() 
@@ -18,6 +18,12 @@ function GlobalContextProvider({children}) {
   const updateStartStatus = () =>{
     setStarted(!started)
   } 
+
+  const [numberOfQuestion, setNumberOfQuestion] = useState(0)
+
+
+
+
 
   const [haveN2, setN2] = useState(false)
   const [haveN3, setN3] = useState(true)
@@ -68,6 +74,7 @@ function GlobalContextProvider({children}) {
   }
 
 
+
   return (
     <GlobalContext.Provider value={
     {
@@ -77,6 +84,9 @@ function GlobalContextProvider({children}) {
       PrevQuestion,
       started,
       updateStartStatus,
+      // getDataFromStorage,
+      // numberOfQuestion,
+      // setNumberOfQuestion,
       haveN2,
       setN2,
       haveN3,

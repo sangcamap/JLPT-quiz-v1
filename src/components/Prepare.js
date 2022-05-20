@@ -4,6 +4,7 @@ import { hideApp, hidePrepare, hideScreen, showApp, showScreen, hideFinish, show
 
 
 
+
 export default memo( function Prepare({notify}) {
 
 const context = useContext(GlobalContext)
@@ -16,6 +17,7 @@ useEffect(() =>{
 const [valid, setValid] = useState(false)
 const checkValid = (e) => {
   setValid(true)
+  context.getDataFromStorage(e)
   if (e.target.value <= 0 || e.target.value.length === 0){
     setValid(false)
   }
@@ -26,6 +28,7 @@ const checkValid = (e) => {
 
 const handleClick = () =>{
   context.updateStartStatus()
+  
   if (valid == true){
     showScreen()
     hidePrepare()
@@ -44,7 +47,11 @@ const handleClick = () =>{
 
   return (
     <div className='prepare'>
-      <input className='prepare__numberOfQuestion' placeholder='Số câu' type='number' onChange={(e) => checkValid(e)}/>
+      <input className='prepare__numberOfQuestion' placeholder='Số câu' type='number' onChange={(e) => {
+        checkValid(e)
+        // context.setNumberOfQuestion(e)
+      }
+        }/>
       <div className='prepare__level'>
         <div className ="prepare__level__inputGroup">
           <input type="checkbox" checked={context.haveN2} onChange = {() => {context.setN2(!context.haveN2)}}/>
