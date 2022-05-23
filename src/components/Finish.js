@@ -39,12 +39,12 @@ export default function Finish() {
             <div className='finish__right__history'>
                 {context.history.map(e => 
                         e.isCorrect == true ? 
-                        (<div className='finish__right__history__item isTrue' key = {e.questionIndex}>
+                        (<div className='finish__right__history__item isTrue' key = {e.questionId}>
                             <span className='finish__right__history__item__question'>{e.question}</span>
                             <span className='finish__right__history__item__answer'>{context.data[e.questionIndex].choice[e.answer - 1]}</span>
                         </div>)
                         :
-                        (<span className='finish__right__history__item isFalse' key = {e.questionIndex}>
+                        (<span className='finish__right__history__item isFalse' key = {e.questionId}>
                             <span className='finish__right__history__item__question'>{e.question}</span>
                             <span className='finish__right__history__item__answer'>{context.data[e.questionIndex].choice[e.answer - 1]}</span>
                         </span>)

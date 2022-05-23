@@ -17,7 +17,8 @@ useEffect(() =>{
 const [valid, setValid] = useState(false)
 const checkValid = (e) => {
   setValid(true)
-  context.getDataFromStorage(e)
+  context.getDataFromStorage(e.target.value)
+
   if (e.target.value <= 0 || e.target.value.length === 0){
     setValid(false)
   }

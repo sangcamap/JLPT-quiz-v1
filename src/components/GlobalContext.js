@@ -1,6 +1,6 @@
 import { createContext, useState , reducer, initialState, useReducer } from "react";
 import React from 'react'
-import { data, dataStorage } from './_test';
+import { data, dataStorage ,getDataFromStorage } from './_test';
 import { useStopwatch } from "react-timer-hook";
 
 const GlobalContext = createContext() 
@@ -65,6 +65,7 @@ function GlobalContextProvider({children}) {
   const updateHistory = (e) => {
     setHistory([...history, 
       {
+        questionId: data[QuestionIndex].id,
         questionIndex: QuestionIndex,
         question: data[QuestionIndex].question,
         answer: data[QuestionIndex].answer,
@@ -84,7 +85,7 @@ function GlobalContextProvider({children}) {
       PrevQuestion,
       started,
       updateStartStatus,
-      // getDataFromStorage,
+      getDataFromStorage,
       // numberOfQuestion,
       // setNumberOfQuestion,
       haveN2,
