@@ -38,15 +38,23 @@ export default function Finish() {
             <h4 className='finish__right__title'>Lịch sử câu hỏi</h4>
             <div className='finish__right__history'>
                 {context.history.map(e => 
-                        e.isCorrect == true ? 
+                        e.isCorrect === true ? 
                         (<div className='finish__right__history__item isTrue' key = {e.questionId}>
                             <span className='finish__right__history__item__question'>{e.question}</span>
-                            <span className='finish__right__history__item__answer'>{context.data[e.questionIndex].choice[e.answer - 1]}</span>
+                            <a 
+                            href={`https://vi.mazii.net/search/word?dict=javi&query=${context.data[e.questionIndex].choice[e.answer - 1]}`} 
+                            target="_blank" rel="noreferrer" className='finish__right__history__item__answer'>
+                                {context.data[e.questionIndex].choice[e.answer - 1]}
+                            </a>
                         </div>)
                         :
                         (<span className='finish__right__history__item isFalse' key = {e.questionId}>
                             <span className='finish__right__history__item__question'>{e.question}</span>
-                            <span className='finish__right__history__item__answer'>{context.data[e.questionIndex].choice[e.answer - 1]}</span>
+                            <a 
+                            href={`https://vi.mazii.net/search/word?dict=javi&query=${context.data[e.questionIndex].choice[e.answer - 1]}`} 
+                            target="_blank" rel="noreferrer" className='finish__right__history__item__answer'>
+                                {context.data[e.questionIndex].choice[e.answer - 1]}
+                            </a>
                         </span>)
                 )}
             </div>
