@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import './fontAwesome';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Status from './Status';
 import Screen from './Screen';
 import Prepare from './Prepare';
-import { showApp, hideApp } from './nav';
 import Background from './Background';
 import { ToastContainer, toast } from 'react-toastify';
 import { GlobalContext } from './GlobalContext';
 import Finish from './Finish';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const context = useContext(GlobalContext)
@@ -24,10 +22,12 @@ function App() {
   return (
     <div className="App app">
         <Background></Background>
-        <Prepare notify={notify}></Prepare>
-        <Screen></Screen>
         <ToastContainer theme='dark' />
-        <Finish></Finish>
+        <Routes>
+          <Route index path='/' element = {<Prepare notify={notify}></Prepare>}></Route>
+          <Route path='/quiz' element = {<Screen></Screen>}></Route>
+          <Route path='/finish' element = {<Finish></Finish>}></Route>
+        </Routes>
     </div>
   );
 }

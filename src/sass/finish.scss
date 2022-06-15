@@ -17,7 +17,21 @@
         justify-content: center;
         flex-direction: column;
         padding: 2rem;
-        gap: 8rem; 
+        gap: 8rem;
+        &__backBtn{
+            background: #4E54C8;
+            outline: 0;
+            border: 0;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: $white;
+            text-decoration: none;
+            align-self: start;
+        } 
         &__info{
             display: flex;
             justify-content: center;

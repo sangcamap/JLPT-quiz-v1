@@ -1,10 +1,11 @@
 import React, {memo, useContext} from 'react'
 import { GlobalContext} from './GlobalContext';
-import { hideScreen, showFinish } from './nav';
-
+import { useNavigate } from "react-router-dom";
 
 export default memo( function Choice() {
   const context = useContext(GlobalContext)
+  let navigate = useNavigate();
+
   const handleAnswer = (num) => {
     if (num == context.data[context.QuestionIndex].answer){
       console.log("Đúng")
@@ -21,8 +22,7 @@ export default memo( function Choice() {
     setTimeout(() => {   
       if (context.QuestionIndex + 1 == context.total){
         context.updateEndTime()
-        hideScreen()
-        showFinish()
+        navigate("../finish", { replace: true })
       }
       else {
         context.NextQuestion()

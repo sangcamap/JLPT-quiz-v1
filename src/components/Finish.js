@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalContext } from './GlobalContext'
+import { Link } from 'react-router-dom'
 
 export default function Finish() {
     const context = useContext(GlobalContext)
@@ -15,9 +16,12 @@ export default function Finish() {
     }, [context.numberOfCorrect])
 
 // console.log(context.history)
+
+
   return (
     <div className='finish'>
         <div className='finish__left'>
+            <Link className='finish__left__backBtn' to='/' onClick={context.resetGlobalContext}>Quay về</Link>
             <div className="progress-pie-chart" data-percent="43">
                 <div className="ppc-progress">
                     <div className="ppc-progress-fill"></div>

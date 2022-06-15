@@ -74,6 +74,19 @@ function GlobalContextProvider({children}) {
     ]);
   }
 
+  const resetGlobalContext = () => {
+    SetQuestionIndex(0)
+    updateStartStatus(false)
+    setN2(false)
+    setN3(true)
+    setN4(false)
+    seconds = 0
+    minutes = 0
+    hours = 0
+    days= 0
+    updateNumberOfCorrect(0)
+    updateHistory([])
+  }
 
 
   return (
@@ -108,7 +121,8 @@ function GlobalContextProvider({children}) {
       numberOfCorrect,
       updateNumberOfCorrect,
       history,
-      updateHistory
+      updateHistory,
+      resetGlobalContext
     }
     }>
         {children}

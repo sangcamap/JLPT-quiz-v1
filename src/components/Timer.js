@@ -1,5 +1,4 @@
 import { useContext, useEffect } from 'react';
-import { useStopwatch } from 'react-timer-hook';
 import { GlobalContext } from './GlobalContext';
 
 

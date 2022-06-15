@@ -1,18 +1,13 @@
 import React, {useContext, useEffect, useState, memo} from 'react'
 import { GlobalContext } from './GlobalContext'
-import { hideApp, hidePrepare, hideScreen, showApp, showScreen, hideFinish, showFinish } from './nav'
-
+import { Link } from "react-router-dom";
 
 
 
 export default memo( function Prepare({notify}) {
 
 const context = useContext(GlobalContext)
-useEffect(() =>{
-  hideScreen()
-  // hidePrepare()
-  hideFinish()
-},[])
+
 
 const [valid, setValid] = useState(false)
 const checkValid = (e) => {
@@ -31,8 +26,8 @@ const handleClick = () =>{
   context.updateStartStatus()
   
   if (valid == true){
-    showScreen()
-    hidePrepare()
+    // showScreen()
+    // hidePrepare()
     notify(1)
     context.updateStartStatus(true)
     context.timerStart()
@@ -67,7 +62,9 @@ const handleClick = () =>{
           <span>N4</span>
         </div>
       </div>
-      <button className='prepare__startBtn' type='button' onClick={handleClick}>Bắt đầu</button>
+      {
+        valid ? (<Link to='quiz' className='prepare__startBtn' type='button' onClick={handleClick}>Bắt đầu</Link>) : ''
+      }
     </div>
   )
 })
